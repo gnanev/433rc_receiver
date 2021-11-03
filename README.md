@@ -28,3 +28,22 @@ The long pulses are decoded as logic 1, and short ones as logic 0
 
 ![pulse](https://user-images.githubusercontent.com/20777524/140095350-3ffacf98-873a-47de-a5f8-d71694c2d795.png)
 
+
+## 3. Usage
+
+Connect Data pin of the receiver to the input pin of the MCU. By default this is pin 2 of the PORTC, but you can change it by editing INPUT_PORT and INPUT_PIN definitions.
+Simply call get433Data(). If there is data available, it will return TRUE, and you will get the 32 bit remote control button code.
+
+
+## 4. Calibration and tweaking
+
+The pulse widths are defined by LOGIC_0_MIN, LOGIC_0_MAX, LOGIC_1_MIN and LOGIC_1_MAX definitions. Since pulse widths are never exact lengths, the algorithm uses intervals to decode logic 1s and 0s. The time units are 
+
+1 / (F_CPU / 256) sec
+
+or
+
+1000 / (F_CPU / 256) ms
+
+Which means that at 16 MHz operating frequiency 1 unit is 0.016 ms or 62.5 units are 1 ms.
+LOW_LEVEL_THRESHOLD defines silence interval after which decoding starts and ends.
