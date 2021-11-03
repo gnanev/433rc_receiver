@@ -47,3 +47,15 @@ or
 
 Which means that at 16 MHz operating frequiency 1 unit is 0.016 ms or 62.5 units are 1 ms.
 LOW_LEVEL_THRESHOLD defines silence interval after which decoding starts and ends.
+You can define VALIDATING_MASK, that is, if the remote button codes have big constant part and only low 2-4 bits changes (which is usualy the case), you can use it to validate the input.
+
+## 5. Diagnostics
+
+If you define RC_DIAGNOSTICS, diagnostic code will be enabled. By calling getDiagnosticsBuffer() you will receive array with stored pulse lengths, regardles if there is valid code stored or not. You can use it to tune the algorithm to decode your specific remote control.
+Additionally, when decoding starts, pin 1 of the PORTC will be set high and when it ends, it will be set back to low. By this, when you connect 2 channel scope to the board, you can visualize algorithm behavior.
+
+## 6. Testing
+
+The library was tested with 3 different remote controls from Aliexpress and works fine with all of them.
+
+ ![remotes](https://user-images.githubusercontent.com/20777524/140107626-1d44d187-70e4-4c9e-becb-4169d573db9c.png)
