@@ -3,7 +3,7 @@
 #define INPUT_PORT	PINC
 #define INPUT_PIN	2
 
-#define LOW_LEVEL_THRESHOLD	100
+#define LOW_LEVEL_THRESHOLD	70
 #define MAX_BUFF_SIZE		25
 
 #define LOGIC_0_MIN	16
@@ -171,4 +171,16 @@ BOOL get433Data(u32* data) {
 	dataReceived = FALSE;
 	blockReceive = FALSE;
 	return TRUE;
+}
+
+void dump433Data()
+{
+	blockReceive = TRUE;
+	issuedData = 0;
+	receivedData = 0;
+	currentPulse = 0;
+	prevState = 0;
+	timeCount = 0;
+	clearDiagPin();
+	blockReceive = FALSE;
 }

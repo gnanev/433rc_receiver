@@ -5,6 +5,7 @@
 
 void setup433Receiver();
 BOOL get433Data(u32* data);
+void dump433Data();
 
 BOOL getDiagnosticsBuffer(u08* buff);
 
